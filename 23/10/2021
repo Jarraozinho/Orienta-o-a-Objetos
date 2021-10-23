@@ -1,0 +1,101 @@
+#include <iostream>
+using namespace std;
+using std::string;
+
+//metodo 
+class AbstractEmployee
+{
+	virtual void AskForPromotion()=0;
+	//funcao abstrata
+};
+
+
+class Emploeyee :AbstractEmployee
+{
+private:
+	// dados privados
+	string Name;
+	string University;
+	int Age;
+
+public:
+	// dados publicos
+	// encapsulamento de dados
+	void setName(string name)
+	{
+		Name = name;
+	}
+	string getName()
+	{
+		return Name;
+	}
+	void setUniversity(string university)
+	{
+		University = university;
+	}
+	string getUniversity()
+	{
+		return University;
+	}
+	void setAge(int age)
+	{
+		if (age >= 18)
+			Age = age;
+	}
+	int getAge()
+	{
+		return Age;
+	}
+	// in these example persons whit more 30 years will  promotion
+	// the persons whit age smaller 30 years will not promotion in work
+	void Introduce()
+	{
+		cout << "Name " << Name << endl;
+		cout << "University " << University << endl;
+		cout << "Age " << Age << endl;
+	}
+	Emploeyee(string name, string university, int age)
+	{
+		Name = name;
+		University = university;
+		Age = age;
+	}
+
+	void AskForPromotion()
+	{
+		if (Age > 30)
+			cout << "Name" << "got Promotion!!!" << endl;
+		else 
+			cout << "Name" << "Sorry NO promotion for you!!!";
+	}
+};
+// in these function are about the favorite language of programmation
+class Develooper:Emploeyee{
+public:
+	string FavProgrammingLanguage;
+	Develooper(string name, string company, int age, string FavProgrammingLanguage):Emploeyee(name, company, age)
+	{
+		FavProgrammingLanguage = FavProgrammingLanguage;
+	}
+};
+
+// abstracao do codigo
+// quando vc escolhe um opcao em um celular,vc aperta um botao 
+// mas as operacoes de codigos privadas sao extremamente complexas
+// employee are empregado
+int main()
+{
+	Emploeyee employee1 = Emploeyee("Marcos", "UNIFEI", 18);
+	employee1.Introduce();
+
+	Emploeyee employee2 = Emploeyee("Fillipe", "Itabira", 100);
+	employee2.Introduce();
+
+	cout << "employee 1" << endl;
+	employee1.AskForPromotion();
+	cout << "employee 2" << endl;
+	employee2.AskForPromotion();
+	
+	Develooper d = Develooper("Marcos"; "UNIFEI", 18, "c++");
+
+}
